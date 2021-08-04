@@ -12,9 +12,12 @@ import {
 const router = new Router();
 
 router.get("/", async (ctx) => {
-  const graph = await createGraph("https://deno.land/x/oak@v8.0.0/mod.ts", {
-    load,
-  });
+  const graph = await createGraph(
+    "https://raw.githubusercontent.com/kitsonk/deploy_dg/main/main.ts",
+    {
+      load,
+    },
+  );
   ctx.response.body = `<!DOCTYPE html><html>
   <body>
     <h1>Graph</h1>
