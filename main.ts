@@ -4,21 +4,16 @@ import {
   Router,
 } from "https://deno.land/x/oak@v8.0.0/mod.ts";
 import * as colors from "https://deno.land/std@0.102.0/fmt/colors.ts";
-import { createGraph } from "https://raw.githubusercontent.com/kitsonk/deno_graph/9d8fd991e4b78facd29255f5cf2ace4942ecede3/mod.ts";
+import {
+  createGraph,
+  load,
+} from "https://raw.githubusercontent.com/kitsonk/deno_graph/03c9947ee9df4bdf06a3ec9923270bdecf8cbde6/mod.ts";
 
 const router = new Router();
 
 router.get("/", async (ctx) => {
   const graph = await createGraph("https://deno.land/x/oak@v8.0.0/mod.ts", {
-    load(specifier) {
-      return Promise.resolve({
-        specifier,
-        headers: {
-          "conent-type": "application/typescript",
-        },
-        content: `console.log("hello deploy");`,
-      });
-    },
+    load,
   });
   ctx.response.body = `<!DOCTYPE html><html>
   <body>
