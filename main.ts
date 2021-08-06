@@ -8,7 +8,7 @@ import * as colors from "https://deno.land/std@0.102.0/fmt/colors.ts";
 import {
   createGraph,
   load,
-} from "https://raw.githubusercontent.com/kitsonk/deno_graph/03c9947ee9df4bdf06a3ec9923270bdecf8cbde6/mod.ts";
+} from "https://raw.githubusercontent.com/kitsonk/deno_graph/63ade1abd02f0eceec7859af0d5cd4a064b96c2a/mod.ts";
 
 const router = new Router();
 
@@ -63,8 +63,17 @@ router.post("/graph", async (ctx) => {
       ctx.response.body = "Bad Request";
       return;
   }
-  ctx.response.body = () => createGraph(rootSpecifier, { load });
-  ctx.response.type = "json";
+  const graph = await createGraph(rootSpecifier, { load });
+  ctx.response.body = `<!DOCTYPE html><html>
+  <head>
+    <title>deno_graph demo</title>
+  </head>
+  <body>
+    <h1>${rootSpecifier}</h1>
+    <pre>${graph.toString(true)}</pre>
+  <body>
+  </html>`;
+  ctx.response.type = "html";
 });
 
 const app = new Application();
