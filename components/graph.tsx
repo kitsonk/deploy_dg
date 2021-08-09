@@ -81,20 +81,26 @@ export class Dependency extends Component<DependencyProps> {
     const { code, type } = dependency;
     if (code && type) {
       return (
-        <>
-          <ResolvedDependency
-            graph={graph}
-            resolved={code}
-            last={false}
-            seen={seen}
-          />
-          <ResolvedDependency
-            graph={graph}
-            resolved={type}
-            last={last}
-            seen={seen}
-          />
-        </>
+        <ResolvedDependency
+          graph={graph}
+          resolved={code}
+          last={false}
+          seen={seen}
+        />
+        // <>
+        //   <ResolvedDependency
+        //     graph={graph}
+        //     resolved={code}
+        //     last={false}
+        //     seen={seen}
+        //   />
+        //   <ResolvedDependency
+        //     graph={graph}
+        //     resolved={type}
+        //     last={last}
+        //     seen={seen}
+        //   />
+        // </>
       );
     } else if (code) {
       return (
