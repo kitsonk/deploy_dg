@@ -55,7 +55,10 @@ export class Graph extends Component<GraphProps> {
       seen.add(root.specifier);
       return (
         <div>
-          <p>{root.specifier}</p>
+          <p>
+            {root.specifier}
+            <span>&nbsp;({root.size})</span>
+          </p>
           <ul class={tw`ml-4`}>{...getDependencies(root, graph, seen)}</ul>
         </div>
       );
@@ -140,7 +143,9 @@ export class ResolvedDependency extends Component<ResolvedDependencyProps> {
         <li>
           <p>
             {module.specifier}
-            {alreadySeen ? <span>*</span> : <span>{module.size}</span>}
+            {alreadySeen
+              ? <span>&nbsp;*</span>
+              : <span>&nbsp;({module.size})</span>}
           </p>
           {alreadySeen ? null : (
             <ul class={tw`ml-4`}>
