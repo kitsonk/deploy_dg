@@ -59,7 +59,7 @@ export class Graph extends Component<GraphProps> {
             {root.specifier}
             <span>&nbsp;({root.size})</span>
           </p>
-          <ul class={tw`ml-4`}>{...getDependencies(root, graph, seen)}</ul>
+          <ul class={tw`ml-4`}>{getDependencies(root, graph, seen)}</ul>
         </div>
       );
     } catch (e) {
@@ -87,20 +87,6 @@ export class Dependency extends Component<DependencyProps> {
           last={false}
           seen={seen}
         />
-        // <>
-        //   <ResolvedDependency
-        //     graph={graph}
-        //     resolved={code}
-        //     last={false}
-        //     seen={seen}
-        //   />
-        //   <ResolvedDependency
-        //     graph={graph}
-        //     resolved={type}
-        //     last={last}
-        //     seen={seen}
-        //   />
-        // </>
       );
     } else if (code) {
       return (
@@ -155,7 +141,7 @@ export class ResolvedDependency extends Component<ResolvedDependencyProps> {
           </p>
           {alreadySeen ? null : (
             <ul class={tw`ml-4`}>
-              {...getDependencies(module, graph, seen)}
+              {getDependencies(module, graph, seen)}
             </ul>
           )}
         </li>
