@@ -1,13 +1,36 @@
 /** @jsx h */
 import { Component, h, tw } from "../deps.ts";
 
+interface GraphLinksProps {
+  links: string[];
+}
+
+class GraphLinks extends Component<GraphLinksProps> {
+  render() {
+    const items = [];
+    for (const child of this.props.links) {
+      items.push(
+        <li>
+          <a
+            class={tw`hover:text-blue-800`}
+            href={`/graph?url=${encodeURIComponent(child)}`}
+          >
+            <code>{child}</code>
+          </a>
+        </li>,
+      );
+    }
+    return <ul class={tw`text-sm list-disc list-inside ml-4`}>{items}</ul>;
+  }
+}
+
 export class SpecifierForm extends Component {
   render() {
     return (
       <form
         action="/graph"
         method="post"
-        class={tw`w-full bg-white rounded-lg`}
+        class={tw`w-full bg-gray-200 rounded-lg`}
       >
         <div class={tw`w-full my-2 px-12 pt-12 space-y-6`}>
           <p>
@@ -19,10 +42,43 @@ export class SpecifierForm extends Component {
           </p>
           <p>
             You can take it for a test spin by supplying a URL module specifier
-            below (e.g.{" "}
-            <code>https://deno.land/std/examples/chat/server.ts</code>), which
-            will be fetched by the Deploy worker and analyzed, returning a
-            representation of the dependency graph to your browser.
+            below, which will be fetched by the Deploy worker and analyzed,
+            returning a representation of the dependency graph to your browser.
+          </p>
+          <p>
+            If you need some inspiration, you can click through to see some
+            examples:
+            <GraphLinks
+              links={[
+                "https://deno.land/std/examples/chat/server.ts",
+                "https://deno.land/x/oak/mod.ts",
+                "https://deno.com/examples/hello_discord.ts",
+              ]}
+            />
+          </p>
+          <p>
+            The source for this web application is available{" "}
+            <a
+              class={tw`text-blue-800`}
+              href="https://github.com/kitsonk/deploy_dg"
+              target="_blank"
+            >
+              https://github.com/kitsonk/deploy_dg
+            </a>{" "}
+            and you can{" "}
+            <a
+              class={tw
+                `bg-white text-sm text-gray-800 font-bold rounded border-b-2 border-green-500 hover:border-green-600 hover:bg-green-500 hover:text-white shadow-md py-2 px-4 inline-flex items-center`}
+              href={`https://dash.deno.com/new?url=${
+                encodeURIComponent(
+                  "https://raw.githubusercontent.com/kitsonk/deploy_dg/main/main.ts",
+                )
+              }`}
+              target="_blank"
+            >
+              Deploy It!
+            </a>{" "}
+            yourself if you wish.
           </p>
         </div>
         <div class={tw`px-12 py-10`}>
