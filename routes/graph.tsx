@@ -57,6 +57,7 @@ export const graphGetPost: RouterMiddleware = async (ctx: RouterContext) => {
       </Body>,
     ),
     getStyleTag(sheet),
+    root,
   );
   ctx.response.type = "html";
 };

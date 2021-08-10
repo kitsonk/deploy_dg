@@ -15,6 +15,8 @@ export const indexGet: RouterMiddleware = (ctx) => {
       </Body>,
     ),
     getStyleTag(sheet),
+    "visualizer",
+    true,
   );
   ctx.response.type = "html";
 };

@@ -33,13 +33,27 @@ export function humanSize(bytes: number, si = true, dp = 1) {
   return `${bytes.toFixed(dp)} ${units[u]}`;
 }
 
-export function getBody(body: string, styles: string): string {
+export function getBody(
+  body: string,
+  styles: string,
+  pageTitle = "",
+  includeMeta = false,
+): string {
+  const meta = includeMeta
+    ? `
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="@denoland" />
+  <meta name="twitter:creator" content="@kitsonk" />
+  <meta property="og:title" content="Deno Graph Visualizer" />
+  <meta property="og:description" content="An example web application using Deno CLI's module graph logic on Deno Deploy, which displays the dependency graph for a provided module." />
+  `
+    : "";
   return `<!DOCTYPE html>
   <html>
     <head>
-      <title>deno_graph</title>
+      <title>Deno Graph${pageTitle ? ` – ${pageTitle}` : ""}</title>
       ${styles}
-      <script src="https://kit.fontawesome.com/c2b13ee81b.js" crossorigin="anonymous"></script>
+      ${meta}
     </head>
     ${body}
   </html>`;
