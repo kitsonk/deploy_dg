@@ -44,6 +44,8 @@ export function getBody(
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:site" content="@denoland" />
   <meta name="twitter:creator" content="@kitsonk" />
+  <meta name="twitter:image" content="https://raw.githubusercontent.com/kitsonk/deploy_dg/main/static/deno_graph_visualizer.png" />
+  <meta name="twitter:image:alt" content="Deno Graph Visualizer logo" />
   <meta property="og:title" content="Deno Graph Visualizer" />
   <meta property="og:description" content="An example web application using Deno CLI's module graph logic on Deno Deploy to create a dependency graph." />
   <meta property="og:image" content="https://raw.githubusercontent.com/kitsonk/deploy_dg/main/static/deno_graph_visualizer.png" />
