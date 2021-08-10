@@ -3,8 +3,10 @@ export {
   HttpError,
   Router,
   Status,
+  STATUS_TEXT,
 } from "https://deno.land/x/oak@v8.0.0/mod.ts";
 export type {
+  Context,
   Middleware,
   RouterContext,
   RouterMiddleware,
@@ -28,10 +30,10 @@ import type {} from "https://deno.land/x/nano_jsx@v0.0.20/types.ts";
 export {
   createGraph,
   load,
-} from "https://raw.githubusercontent.com/kitsonk/deno_graph/48e6c42a0643505a8cd3f7d0536945e3569148e3/mod.ts";
+} from "https://raw.githubusercontent.com/kitsonk/deno_graph/451b72c108afc7c04deb88251b7c799c36cdd853/mod.ts";
 export type {
   Dependency,
   Module,
   ModuleGraph,
   ResolvedDependency,
-} from "https://raw.githubusercontent.com/kitsonk/deno_graph/48e6c42a0643505a8cd3f7d0536945e3569148e3/mod.ts";
+} from "https://raw.githubusercontent.com/kitsonk/deno_graph/451b72c108afc7c04deb88251b7c799c36cdd853/mod.ts";

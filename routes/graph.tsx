@@ -52,7 +52,7 @@ export const graphGetPost: RouterMiddleware = async (ctx: RouterContext) => {
   const graph = await createGraph(root, { load });
   ctx.response.body = getBody(
     renderSSR(
-      <Body title="deno_graph" subtitle={root}>
+      <Body title="Deno Graph" subtitle={root}>
         <Graph graph={graph} />
       </Body>,
     ),

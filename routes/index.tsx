@@ -10,7 +10,7 @@ export const indexGet: RouterMiddleware = (ctx) => {
   sheet.reset();
   ctx.response.body = getBody(
     renderSSR(
-      <Body title="deno_graph" subtitle="visualizer">
+      <Body title="Deno Graph" subtitle="visualizer">
         <SpecifierForm />
       </Body>,
     ),

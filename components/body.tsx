@@ -11,7 +11,7 @@ export class Body extends Component<Props> {
   render() {
     return (
       <body class={tw`bg-gray-300`}>
-        <div class={tw`max-w-3xl sm:max-w-xl md:max-w-2xl mx-auto p-6`}>
+        <div class={tw`max-w-4xl mx-auto p-6`}>
           <div class={tw`clear-both mb-12`}>
             <img
               src="https://deno.land/images/deno_logo_4.gif"

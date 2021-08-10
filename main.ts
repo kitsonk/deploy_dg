@@ -1,4 +1,5 @@
 import { Application, colors, HttpError, Router } from "./deps.ts";
+import { handleErrors } from "./middleware/errors.tsx";
 import { createFaviconMW } from "./middleware/favicon.ts";
 import { logging, timing } from "./middleware/logging.ts";
 import { graphGetPost } from "./routes/graph.tsx";
@@ -15,6 +16,8 @@ const app = new Application();
 app.use(logging);
 app.use(timing);
 app.use(createFaviconMW("https://deno.land/favicon.ico"));
+
+app.use(handleErrors);
 
 app.use(router.routes());
 app.use(router.allowedMethods());
