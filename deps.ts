@@ -27,10 +27,13 @@ export { Fragment } from "https://deno.land/x/nano_jsx@v0.0.20/fragment.ts";
 export { renderSSR } from "https://deno.land/x/nano_jsx@v0.0.20/ssr.ts";
 import type {} from "https://deno.land/x/nano_jsx@v0.0.20/types.ts";
 
-export { createGraph, load } from "https://deno.land/x/deno_graph@0.1.0/mod.ts";
+export {
+  createGraph,
+  load,
+} from "https://raw.githubusercontent.com/kitsonk/deno_graph/reaf_rem_wee_alloc/mod.ts";
 export type {
   Dependency,
   Module,
   ModuleGraph,
   ResolvedDependency,
-} from "https://deno.land/x/deno_graph@0.1.0/mod.ts";
+} from "https://raw.githubusercontent.com/kitsonk/deno_graph/reaf_rem_wee_alloc/mod.ts";
